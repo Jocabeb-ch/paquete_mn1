@@ -20,13 +20,13 @@ int menuMetodo(){
 
 	printf("\n\n===== Primer programa =====\n\n");
 
-	printf("--- M…TODOS ---\n\n");
+	printf("--- M√âTODOS ---\n\n");
 
-	printf("1. M…TODO DE BISECCION.\n");
-	printf("2. M…TODO DE LA SECANTE.\n");
+	printf("1. M√âTODO DE BISECCION.\n");
+	printf("2. M√âTODO DE LA SECANTE.\n");
 	printf("3. SALIDA\n");
 
-	printf("OpciÛn: ");
+	printf("Opci√≥n: ");
 	scanf("%d", &opcion);
 
 	return opcion;
@@ -44,7 +44,7 @@ int menuFuncion(){
 	printf("4.  f(x) = x^3 + 6x^2 + 9.4x + 2.5 \n");
 	printf("5.  REGRESAR \n");
 
-	printf("OpciÛn: ");
+	printf("Opci√≥n: ");
 	scanf("%d", &op);
 
 	printf("\n\n");
@@ -74,7 +74,7 @@ void biseccion(double a, double b, int max_iter,int op, double tol) {
     double fa,fb,p,fp,errorAprox,p_anterior;
     int i=0;
 
-    //Inicia tabulaciÛn.
+    //Inicia tabulaci√≥n.
     printf("%3s %12s %12s %12s %12s %12s %12s %12s\n","i","a","b","f(a)","f(b)","p=(a+b)/2","f(p)","Error Aproximado");
     do {
         fa=Evaluar(op,a);
@@ -104,28 +104,28 @@ void biseccion(double a, double b, int max_iter,int op, double tol) {
 
     }while(i<max_iter&&errorAprox>tol);
 
-    printf("La raÌz aproximada es: %f\n",p);
+    printf("La ra√≠z aproximada es: %f\n",p);
 }
 
-//RevisiÛn de lo necesario para comenzar con el mÈtodo de bisecciÛn
+//Revisi√≥n de lo necesario para comenzar con el m√©todo de bisecci√≥n
 void Revision(int op) {
     double a,b,tol;
     int max_iter;
 
-    printf("Introduce el valor de a (lÌmite inferior): ");
+    printf("Introduce el valor de a (l√≠mite inferior): ");
     scanf("%lf",&a);
 
-    printf("Introduce el valor de b (lÌmite superior): ");
+    printf("Introduce el valor de b (l√≠mite superior): ");
     scanf("%lf",&b);
 
-    printf("Introduce el n˙mero m·ximo de iteraciones: ");
+    printf("Introduce el n√∫mero m√°ximo de iteraciones: ");
     scanf("%d",&max_iter);
 
     printf("Introduce la tolerancia deseada: ");
     scanf("%lf",&tol);
 
     if (Evaluar(op,a)*Evaluar(op,b)>0)
-        printf("El intervalo no encierra una raÌz\n\n");
+        printf("El intervalo no encierra una ra√≠z\n\n");
     else
         biseccion(a, b, max_iter, op, tol);
 }
@@ -137,21 +137,21 @@ void Secante(int op){
 
     printf("Introduce el valor del limite inferior: ");
     scanf("%lf",&xk_1);
-    printf("Introduce el valor del lÌmite superior: ");
+    printf("Introduce el valor del l√≠mite superior: ");
     scanf("%lf",&xk);
-    printf("Introduce el n˙mero m·ximo de iteraciones: ");
+    printf("Introduce el n√∫mero m√°ximo de iteraciones: ");
     scanf("%d",&max_iter);
     printf("Introduce la tolerancia deseada: ");
     scanf("%lf",&tol);
 
     if (fabs(xk-xk_1)<tol){
-        printf("Error: Los lÌmites iniciales no pueden ser iguales o demasiado cercanos.\n\n");
+        printf("Error: Los l√≠mites iniciales no pueden ser iguales o demasiado cercanos.\n\n");
         return;
     }
 
     double fxk_1, fxk, xk1, fxk1, errorRelativo, xk1_anterior = 0;
     int i=0;
- // Inicia tabulaciÛn.
+ // Inicia tabulaci√≥n.
     printf("%3s %12s %12s %12s %12s %12s %12s %12s\n", "i", "xk-1", "xk", "f(xk-1)", "f(xk)", "xk+1", "f(xk+1)", "Error Relativo P");
     do{
         // Calcula las funciones en los puntos actuales
@@ -159,7 +159,7 @@ void Secante(int op){
         fxk=Evaluar(op, xk);
 
         if (fabs(fxk_1-fxk)<tol){
-            printf("Error: DivisiÛn por cero, la funciÛn no cambia significativamente.\n\n");
+            printf("Error: Divisi√≥n por cero, la funci√≥n no cambia significativamente.\n\n");
             return;
         }
         //xk+1
@@ -179,7 +179,7 @@ void Secante(int op){
         xk1_anterior=xk1;
         i++;
 
-        // Verifica la condiciÛn de convergencia
+        // Verifica la condici√≥n de convergencia
         if (errorRelativo<=tol) {
             RaizAu=xk1;
             toleAu=errorRelativo;
@@ -189,10 +189,10 @@ void Secante(int op){
     }while (i<max_iter);
 
     if(indicador==1)
-        printf(">La raÌz aproximada es: %lf con la tolerancia %lf \n\n",RaizAu,toleAu);
+        printf(">La ra√≠z aproximada es: %lf con la tolerancia %lf \n\n",RaizAu,toleAu);
     else {
-        printf(">Se alcanzÛ el n˙mero m·ximo de iteraciones sin convergencia.\n");
-        printf(">La ˙ltima raÌz aproximada es: %lf con el error relativo %lf \n\n", xk1, errorRelativo);
+        printf(">Se alcanz√≥ el n√∫mero m√°ximo de iteraciones sin convergencia.\n");
+        printf(">La √∫ltima ra√≠z aproximada es: %lf con el error relativo %lf \n\n", xk1, errorRelativo);
     }
 }
 
@@ -202,60 +202,60 @@ void eleccionMetodo(int op,int met){
 
 		switch(op){
 			case 1:
-				printf("Has elegido la funciÛn 1. \n");
+				printf("Has elegido la funci√≥n 1. \n");
 					if(met==1){
-						printf("Resolviendo la funciÛn f(x) = x^2 cos(x) - 2x por el mÈtodo de la BISECCION.\n  ");
+						printf("Resolviendo la funci√≥n f(x) = x^2 cos(x) - 2x por el m√©todo de la BISECCION.\n  ");
 						Revision(op);
 					}
 					else{
-						printf("Resolviendo la funciÛn f(x) = x^2 cos(x) - 2x por el mÈtodo de la SECANTE.\n  ");
+						printf("Resolviendo la funci√≥n f(x) = x^2 cos(x) - 2x por el m√©todo de la SECANTE.\n  ");
 						Secante(op);
 					}
 
 				pausar();
 				break;
 			case 2:
-				printf("Has elegido la funciÛn 2. \n");
+				printf("Has elegido la funci√≥n 2. \n");
 				if(met==1){
-						printf("Resolviendo la funciÛn  f(x) = (6 - 2x^2) * exp^(2 + x^4) + 1  por el mÈtodo de la BISECCION.\n  ");
+						printf("Resolviendo la funci√≥n  f(x) = (6 - 2x^2) * exp^(2 + x^4) + 1  por el m√©todo de la BISECCION.\n  ");
 						Revision(op);
 					}
 					else{
-						printf("Resolviendo la funciÛn  f(x) = (6 - 2x^2) * exp^(2 + x^4) + 1 por el mÈtodo de la SECANTE.\n  ");
+						printf("Resolviendo la funci√≥n  f(x) = (6 - 2x^2) * exp^(2 + x^4) + 1 por el m√©todo de la SECANTE.\n  ");
 						Secante(op);
 					}
 				pausar();
 				break;
 			case 3:
-				printf("Has elegido la funciÛn 3. \n");
+				printf("Has elegido la funci√≥n 3. \n");
 				if(met==1){
-						printf("Resolviendo la funciÛn f(x) = x^3 - 3 * sin(x^2) + 1 por el mÈtodo de la BISECCION\n  ");
+						printf("Resolviendo la funci√≥n f(x) = x^3 - 3 * sin(x^2) + 1 por el m√©todo de la BISECCION\n  ");
 						Revision(op);
 					}
 					else{
-						printf("Resolviendo la funciÛn f(x) = x^3 - 3 * sin(x^2) + 1 por el mÈtodo de la SECANTE.\n  ");
+						printf("Resolviendo la funci√≥n f(x) = x^3 - 3 * sin(x^2) + 1 por el m√©todo de la SECANTE.\n  ");
 						Secante(op);
 					}
 				pausar();
 				break;
 			case 4:
-				printf("Has elegido la funciÛn 4. \n");
+				printf("Has elegido la funci√≥n 4. \n");
 				if(met==1){
-						printf("Resolviendo la funciÛn f(x) = x^3 + 6x^2 + 9.4x + 2.5 por el mÈtodo de la BISECCION.\n  ");
+						printf("Resolviendo la funci√≥n f(x) = x^3 + 6x^2 + 9.4x + 2.5 por el m√©todo de la BISECCION.\n  ");
 						Revision(op);
 					}
 					else{
-						printf("Resolviendo la funciÛn f(x) = x^3 + 6x^2 + 9.4x + 2.5 por el mÈtodo de la SECANTE.\n  ");
+						printf("Resolviendo la funci√≥n f(x) = x^3 + 6x^2 + 9.4x + 2.5 por el m√©todo de la SECANTE.\n  ");
 						Secante(op);
 					}
 				pausar();
 				break;
 			case 5:
-				printf("Regresando al men˙ anterior...\n\n");
+				printf("Regresando al men√∫ anterior...\n\n");
 				pausar();
 				break;
 			default:
-				printf("OPCI”N NO V¡LIDA :c \n\n");
+				printf("OPCI√ìN NO V√ÅLIDA :c \n\n");
 		}
 
 	}while(op != 5);
@@ -270,7 +270,7 @@ int main(){
 		opcion=menuMetodo();
 
 		switch(opcion){
-			case 1://BisecciÛn
+			case 1://Bisecci√≥n
 				met=1;
 				eleccionMetodo(opcion,met);
 				break;
@@ -281,10 +281,10 @@ int main(){
 				printf("HASTA LUEGO :) \n\n");
 				break;
 			default:
-				printf("OPCI”N NO V¡LIDA :c \n\n");
+				printf("OPCI√ìN NO V√ÅLIDA :c \n\n");
 		}
 
-		printf("\n\nøDesea obtener otra raÌz? (1: SÌ | 0: No): ");
+		printf("\n\n¬øDesea obtener otra ra√≠z? (1: S√≠ | 0: No): ");
         int resp;
         scanf("%d", &resp);
         if (!resp) break;
