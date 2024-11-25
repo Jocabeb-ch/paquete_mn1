@@ -4,7 +4,7 @@
 #include <ctype.h>
 double *vectorInd = NULL;
 
-// FunciÛn para verificar si una cadena es un n˙mero v·lido
+// Funci√≥n para verificar si una cadena es un n√∫mero v√°lido
 int esNumeroValido(char *cadena) {
   char *ptr = cadena;
   int hay_punto = 0;
@@ -15,15 +15,15 @@ int esNumeroValido(char *cadena) {
       if (*ptr == '.' && !hay_punto) {
         hay_punto = 1; // Permitir un punto decimal
       } else {
-        return 0; // No es un n˙mero v·lido
+        return 0; // No es un n√∫mero v√°lido
       }
     }
     ptr++;
   }
-  return 1; // Es un n˙mero v·lido
+  return 1; // Es un n√∫mero v√°lido
 }
 
-// FunciÛn para leer un n˙mero v·lido
+// Funci√≥n para leer un n√∫mero v√°lido
 double leerNumero() {
   char input[100];
   while (1) {
@@ -31,8 +31,8 @@ double leerNumero() {
     if (esNumeroValido(input))
       return atof(input);
     else
-      printf("Entrada inv·lida. Solo se aceptan n˙meros enteros o con punto "
-             "decimal. IntÈntalo de nuevo: ");
+      printf("Entrada inv√°lida. Solo se aceptan n√∫meros enteros o con punto "
+             "decimal. Int√©ntalo de nuevo: ");
   }
 }
 
@@ -74,13 +74,13 @@ double *multiplicarMatrizVector(double **matriz, double *vector, int n) {
 }
 
 
-// MÈtodo de potencias
+// M√©todo de potencias
 void met_Potencias(double **matriz, double *vector, int n, int iter, double tolerancia) {
     double max = 0, maxAnterior = 0, prueba_t;
     double *resultado;
 	int j;
     for ( j = 1; j <= iter; j++) {
-        printf("\nIteraciÛn %d\n", j);
+        printf("\nIteraci√≥n %d\n", j);
 
         // Multiplicar matriz por vector
         resultado = multiplicarMatrizVector(matriz, vector, n);
@@ -89,7 +89,7 @@ void met_Potencias(double **matriz, double *vector, int n, int iter, double tole
         printf("Resultado del producto A * x_k: ");
         imprimirVector(resultado, n);
 		int i;
-        // Encontrar el m·ximo en valor absoluto
+        // Encontrar el m√°ximo en valor absoluto
         max = fabs(resultado[0]);
         for ( i = 1; i < n; i++) {
             if (fabs(resultado[i]) > max) {
@@ -97,7 +97,7 @@ void met_Potencias(double **matriz, double *vector, int n, int iter, double tole
             }
         }
 
-        // Imprimir el valor m·ximo
+        // Imprimir el valor m√°ximo
         printf("El mayor valor propio (lambda) de esta iteracion es: %lf\n", max);
         for (i = 0; i < n; i++) {
             vector[i] = resultado[i] / max;
@@ -107,17 +107,17 @@ void met_Potencias(double **matriz, double *vector, int n, int iter, double tole
         printf("Vector normalizado x_{k+1}: ");
         imprimirVector(vector, n);
 
-        // Verificar la tolerancia si estamos en la iteraciÛn 2 o m·s
+        // Verificar la tolerancia si estamos en la iteraci√≥n 2 o m√°s
         if (j >= 2) {
             prueba_t = fabs(max - maxAnterior);
             printf("Error: %lf\n", prueba_t);
             if (prueba_t < tolerancia) {
-                printf("Se alcanzÛ la tolerancia: %lf < %lf\n", prueba_t, tolerancia);
+                printf("Se alcanz√≥ la tolerancia: %lf < %lf\n", prueba_t, tolerancia);
                 break;
             }
         }
 
-        // Actualizar el m·ximo anterior
+        // Actualizar el m√°ximo anterior
         maxAnterior = max;
 
         // Liberar memoria del vector resultado
@@ -161,7 +161,7 @@ int main() {
         return 0;
     }
 
-    printf("Introduce los coeficientes de la matriz por renglÛn:\n");
+    printf("Introduce los coeficientes de la matriz por rengl√≥n:\n");
     for (i = 0; i < n; i++) {
         for (j = 0; j < n; j++) {
             printf("Elemento [%d][%d]: ", i, j);
@@ -179,13 +179,13 @@ int main() {
     printf("\nVector inicial:\n");
     imprimirVector(vectorIn, n);
 
-    printf("Introduce el n˙mero m·ximo de iteraciones:\n");
+    printf("Introduce el n√∫mero m√°ximo de iteraciones:\n");
     iter = (int)leerNumero();
 
     printf("Introduce la tolerancia:\n");
     tolerancia = leerNumero();
 
-    // Llamar al mÈtodo de potencias para obtener el mayor valor propio
+    // Llamar al m√©todo de potencias para obtener el mayor valor propio
     met_Potencias(matriz, vectorIn, n, iter, tolerancia);
     
     // Liberar memoria
